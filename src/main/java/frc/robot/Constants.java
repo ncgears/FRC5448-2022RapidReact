@@ -44,7 +44,7 @@ public class Constants {
     }
 
     public class Shooter {
-        public static final boolean isInverted = false;
+        public static final boolean isInverted = true;
         public static final boolean useShooterThrottle = true; //true to use the right joystick throttle slider, false to use fixed speed below
         public static final double kShooterSpeed = 0.4; //percent output of shooter motor
     }

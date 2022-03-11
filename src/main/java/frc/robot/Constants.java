@@ -5,21 +5,20 @@ public class Constants {
     public class IDs {
         //IDs of Talons
         public class Talon {
-            public static final int feedBottomFront = 5;
-            public static final int feedBottomRear = 4;
-            public static final int feedTopFront = 7;
-            public static final int feedTopRear = 6;
+            public static final int intake = 5;
         }
         //IDs of Victors
         public class Victor {
-            public static final int driveLeftRear = 0;
-            public static final int driveLeftFront = 1;
-            public static final int driveRightRear = 2;
-            public static final int driveRightFront = 3;
+            public static final int driveLeftRear = 1;
+            public static final int driveLeftFront = 2;
+            public static final int driveRightRear = 3;
+            public static final int driveRightFront = 4;
         }
-        //IDs of Falcons
-        public class Falcon {
-            public static final int shooter = 8;
+        //IDs of Solenoids
+        public class Solenoid {
+            public static final int driveLowGear = 0;
+            public static final int driveHighGear = 1;
+            public static final int collectorRaise = 2;
         }
     }
 
@@ -34,20 +33,12 @@ public class Constants {
     }
 
     //Collector/Intake
-    public class Feeder {
-        public static final boolean isInvertedTopFront = true;
-        public static final boolean isInvertedTopRear = false;
-        public static final boolean isInvertedBottomFront = true;
-        public static final boolean isInvertedBottomRear = false;
-        public static final double kFeederSpeedTop = 0.5;
-        public static final double kFeederSpeedBottom = 0.5;
+    public class Collector {
+        public static final boolean airStateDeployed = true; //state of the solenoid when collector deployed
+        public static final double kIntakeSpeed = 0.5; //Speed of intake motors
+        public static final boolean intakeIsInverted = false; //invert intake direction
     }
 
-    public class Shooter {
-        public static final boolean isInverted = true;
-        public static final boolean useShooterThrottle = true; //true to use the right joystick throttle slider, false to use fixed speed below
-        public static final double kShooterSpeed = 0.4; //percent output of shooter motor
-    }
     //Auton
     public class Auton {
         public static final boolean isDisableld = false;
@@ -56,20 +47,10 @@ public class Constants {
 
     //Operator Interface
     public class OI {
-        public static final boolean useArcadeDrive = true; //set to false to use tank drive where each joystick runs a seperate side of the robot
         public static final int leftJoy = 0;
         public static final int rightJoy = 1;
-        public static final int operJoy = 2;
         public static final double kMaxDeadband = 0.9;
         public static final double kMinDeadband = 0.1;
-
-        public static final int tankThrottleAxis = 1;
-        public static final int arcadeThrottleAxis = 1;
-        public static final int arcadeTurnAxis = 0;
-
-        public static final int btnShooter = 1;
-        public static final int btnBottomFeed = 2;
-        public static final int btnTopFeed = 3;
     }
 
     //Controller Types (don't edit these)

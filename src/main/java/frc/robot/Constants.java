@@ -16,19 +16,20 @@ public class Constants {
         }
         //IDs of Solenoids
         public class Solenoid {
-            public static final int driveLowGear = 0;
-            public static final int driveHighGear = 1;
+            public static final int driveHighGear = 0;
+            public static final int driveLowGear = 1;
             public static final int collectorRaise = 2;
         }
     }
 
     //Drivetrain
     public class DriveTrain {
+        public static final double kSpeedMultiplier = 0.75; //manage top speed by mathing
         public class Left {
-            public static final boolean isInverted = false; //invert the left motors
+            public static final boolean isInverted = true; //invert the left motors
         }
         public class Right {
-            public static final boolean isInverted = true; //invert the right motors
+            public static final boolean isInverted = false; //invert the right motors
         }
     }
 

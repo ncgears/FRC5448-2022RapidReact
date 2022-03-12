@@ -45,6 +45,7 @@ public class Robot extends TimedRobot {
     m_leftMotor.setInverted(Constants.DriveTrain.Left.isInverted);
     m_rightMotor.setInverted(Constants.DriveTrain.Right.isInverted);
     m_intake.setInverted(Constants.Collector.intakeIsInverted);
+    m_gearShift.set(DoubleSolenoid.Value.kForward);
   }
 
   //This runs at when the robot is disabled. Useful for resetting things.
@@ -68,9 +69,9 @@ public class Robot extends TimedRobot {
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
     if(Constants.OI.useTankDrive) {
-      m_robotDrive.tankDrive(OI.deadband(-m_leftJoystick.getRawAxis(1)), OI.deadband(-m_rightJoystick.getRawAxis(1)));
+      m_robotDrive.tankDrive(OI.deadband(-m_leftJoystick.getRawAxis(1)) * Constants.DriveTrain.kSpeedMultiplier, OI.deadband(-m_rightJoystick.getRawAxis(1)) * Constants.DriveTrain.kSpeedMultiplier);
     } else {
-      m_robotDrive.arcadeDrive(OI.deadband(-m_leftJoystick.getRawAxis(1)), OI.deadband(m_rightJoystick.getRawAxis(0)));
+      m_robotDrive.arcadeDrive(OI.deadband(-m_leftJoystick.getRawAxis(1)) * Constants.DriveTrain.kSpeedMultiplier, OI.deadband(m_rightJoystick.getRawAxis(0)));
     }
 
     //Handle the gear shifting
@@ -118,7 +119,7 @@ public class Robot extends TimedRobot {
       switch (Constants.Auton.autonName) {
         case "Basic": //Basic Auton
           if (m_timer.get() < 2.0) { //2 seconds
-            m_robotDrive.arcadeDrive(0.5, 0.0); //drive forward at 50% speed
+            m_robotDrive.arcadeDrive(0.5 * Constants.DriveTrain.kSpeedMultiplier, 0.0); //drive forward at 50% speed
           } else {
             m_robotDrive.stopMotor(); //stop
           }

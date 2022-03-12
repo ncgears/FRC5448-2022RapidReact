@@ -42,11 +42,12 @@ public class Constants {
     //Auton
     public class Auton {
         public static final boolean isDisableld = false;
-        public static final String autonName = "Basic";
+        public static final String autonName = "Basic"; //Basic or None, case-sensitive
     }
 
     //Operator Interface
     public class OI {
+        public static final boolean useTankDrive = false; //true to use tank (left track, right track), false to use arcade (throttle/turn)
         public static final int leftJoy = 0;
         public static final int rightJoy = 1;
         public static final double kMaxDeadband = 0.9;

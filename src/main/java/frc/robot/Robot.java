@@ -74,7 +74,7 @@ public class Robot extends TimedRobot {
     }
 
     //Handle the gear shifting
-    if(m_leftJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_1)) { //shift to low gear
+    if(m_leftJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_4)) { //shift to low gear
       System.out.println("teleopPeriodic: Shifting to low gear -- I am STRONG!");
       m_gearShift.set(DoubleSolenoid.Value.kForward);
     } else if(m_leftJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_5)) { //shift to high gear
@@ -83,7 +83,7 @@ public class Robot extends TimedRobot {
     }
 
     //Handle the collector controls
-    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_1)) { //lower collector
+    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_4)) { //lower collector
       System.out.println("teleopPeriodic: Lowering Collector");
       m_collector.set(!Constants.Collector.airStateDeployed);
     } else if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_5)) { //raise collector
@@ -92,19 +92,14 @@ public class Robot extends TimedRobot {
     }
 
     //Handle the intake
-    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_3)) { //intake in
+    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_2)) { //intake in
       System.out.println("teleopPeriodic: Intake In");
-    } else if (m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_4)) { //intake out
-      System.out.println("teleopPeriodic: Intake Out");
-    } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_3) || m_leftJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_4)) { //intake stop
-      System.out.println("teleopPeriodic: Intake Stop");
-    }
-    //this is WHILE held
-    if(m_leftJoystick.getRawButton(Constants.Controllers.Ultrastik.BTN_3)) { //intake in
       m_intake.set(ControlMode.PercentOutput, Constants.Collector.kIntakeSpeed);
-    } else if (m_leftJoystick.getRawButton(Constants.Controllers.Ultrastik.BTN_4)) { //intake out
+    } else if (m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_1)) { //intake out
+      System.out.println("teleopPeriodic: Intake Out");
       m_intake.set(ControlMode.PercentOutput, Constants.Collector.kIntakeSpeed * -1);
-    } else { //intake stop
+    } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_2) || m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_1)) { //intake stop
+      System.out.println("teleopPeriodic: Intake Stop");
       m_intake.set(ControlMode.PercentOutput, 0);
     }
   }

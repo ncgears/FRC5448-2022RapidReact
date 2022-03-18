@@ -44,7 +44,7 @@ public class Constants {
     public class Auton {
         public static final boolean isDisabled = false;
         public static final String autonName = "Basic"; //Basic or None, case-sensitive
-        public static final double kAutonDriveSpeed = 0.75; //drive speed during auton percentage
+        public static final double kAutonDriveSpeed = 0.6; //drive speed during auton percentage
     }
 
     //Operator Interface

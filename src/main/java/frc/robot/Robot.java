@@ -115,11 +115,11 @@ public class Robot extends TimedRobot {
   //This runs every loop during autonomous
   @Override
   public void autonomousPeriodic() {
-    if (!Constants.Auton.isDisableld) {
+    if (!Constants.Auton.isDisabled) {
       switch (Constants.Auton.autonName) {
         case "Basic": //Basic Auton
           if (m_timer.get() < 2.0) { //2 seconds
-            m_robotDrive.arcadeDrive(0.5 * Constants.DriveTrain.kSpeedMultiplier, 0.0); //drive forward at 50% speed
+            m_robotDrive.arcadeDrive(Constants.Auton.kAutonDriveSpeed, 0.0); //drive forward at 50% speed
           } else {
             m_robotDrive.stopMotor(); //stop
           }

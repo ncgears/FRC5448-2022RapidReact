@@ -5,7 +5,7 @@ public class Constants {
     public class IDs {
         //IDs of Talons
         public class Talon {
-            public static final int intake = 6;
+            public static final int intake = 10;
         }
         //IDs of Victors
         public class Victor {
@@ -36,14 +36,15 @@ public class Constants {
     //Collector/Intake
     public class Collector {
         public static final boolean airStateDeployed = true; //state of the solenoid when collector deployed
-        public static final double kIntakeSpeed = 0.65; //Speed of intake motors
+        public static final double kIntakeSpeed = 1; //Speed of intake motors
         public static final boolean intakeIsInverted = false; //invert intake direction
     }
 
     //Auton
     public class Auton {
-        public static final boolean isDisableld = false;
+        public static final boolean isDisabled = false;
         public static final String autonName = "Basic"; //Basic or None, case-sensitive
+        public static final double kAutonDriveSpeed = 0.75; //drive speed during auton percentage
     }
 
     //Operator Interface

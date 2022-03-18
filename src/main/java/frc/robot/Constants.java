@@ -36,7 +36,7 @@ public class Constants {
     //Collector/Intake
     public class Collector {
         public static final boolean airStateDeployed = true; //state of the solenoid when collector deployed
-        public static final double kIntakeSpeed = 0.75; //Speed of intake motors
+        public static final double kIntakeSpeed = 0.65; //Speed of intake motors
         public static final boolean intakeIsInverted = false; //invert intake direction
     }
 

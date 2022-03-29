@@ -54,7 +54,7 @@ public class Constants {
     public class Shooter {
         public static final double kShooterSpeed = 1.0;
         public static final boolean shooterLeftIsInverted = false;
-        public static final boolean shooterRightIsInverted = false;
+        public static final boolean shooterRightIsInverted = true;
     }
 
     //Auton

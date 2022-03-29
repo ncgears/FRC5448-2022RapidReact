@@ -60,7 +60,7 @@ public class Constants {
     //Auton
     public class Auton {
         public static final boolean isDisabled = false;
-        public static final String autonName = "Basic"; //Basic or None, case-sensitive
+        public static final String autonName = "Basic"; //Basic, ShootAndScoot, or None, case-sensitive
         public static final double kAutonDriveSpeed = 0.6; //drive speed during auton percentage
     }
 

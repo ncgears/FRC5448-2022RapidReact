@@ -154,6 +154,22 @@ public class Robot extends TimedRobot {
             m_robotDrive.stopMotor(); //stop
           }
           break;
+        case "ShootAndScoot": //Basic Auton
+          m_shooter.set(Constants.Shooter.kShooterSpeed); //start the shooter
+          //wait for shooter to get to speed, then run the tunnel until it is time to drive
+          if (m_timer.get() > 0.5 && m_timer.get() < 2.0) { //at 0.5s, until 2s
+            m_tunnel.set(Constants.Tunnel.kTunnelSpeed);
+          } else {
+            m_tunnel.stopMotor();
+          }
+          //stop the shooter and start driving
+          if (m_timer.get() > 2.0 && m_timer.get() < 4.0) { //at 2s, until 4s
+            m_shooter.stopMotor();
+            m_robotDrive.arcadeDrive(-Constants.Auton.kAutonDriveSpeed, 0.0); //drive forward at 50% speed
+          } else {
+            m_robotDrive.stopMotor(); //stop
+          }
+          break;
         default:
           break;
       }

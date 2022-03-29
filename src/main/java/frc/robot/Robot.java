@@ -5,6 +5,7 @@
 package frc.robot;
 //test
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.kauailabs.navx.frc.AHRS;
@@ -37,6 +38,10 @@ public class Robot extends TimedRobot {
   private final DoubleSolenoid m_gearShift = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.IDs.Solenoid.driveLowGear, Constants.IDs.Solenoid.driveHighGear);
   private final Solenoid m_collector = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.IDs.Solenoid.collectorRaise);
   private final WPI_TalonSRX m_intake = new WPI_TalonSRX(Constants.IDs.Talon.intake);
+  private final WPI_TalonSRX m_tunnel = new WPI_TalonSRX(Constants.IDs.Talon.tunnel);
+  private final WPI_TalonSRX m_shooterLeft = new WPI_TalonSRX(Constants.IDs.Talon.shooterLeft);
+  private final WPI_TalonSRX m_shooterRight = new WPI_TalonSRX(Constants.IDs.Talon.shooterRight);
+  private final MotorControllerGroup m_shooter = new MotorControllerGroup(m_shooterLeft, m_shooterRight);
   private final Timer m_timer = new Timer();
 
   @Override
@@ -45,7 +50,14 @@ public class Robot extends TimedRobot {
     m_leftMotor.setInverted(Constants.DriveTrain.Left.isInverted);
     m_rightMotor.setInverted(Constants.DriveTrain.Right.isInverted);
     m_intake.setInverted(Constants.Collector.intakeIsInverted);
+    m_intake.setNeutralMode(NeutralMode.Brake);
     m_gearShift.set(DoubleSolenoid.Value.kForward);
+    m_tunnel.setInverted(Constants.Tunnel.tunnelIsInverted);
+    m_tunnel.setNeutralMode(NeutralMode.Brake);
+    m_shooterLeft.setInverted(Constants.Shooter.shooterLeftIsInverted);
+    m_shooterRight.setInverted(Constants.Shooter.shooterRightIsInverted);
+    m_shooterLeft.setNeutralMode(NeutralMode.Coast);
+    m_shooterRight.setNeutralMode(NeutralMode.Coast);
   }
 
   //This runs at when the robot is disabled. Useful for resetting things.
@@ -102,6 +114,24 @@ public class Robot extends TimedRobot {
     } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_2) || m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_1)) { //intake stop
       System.out.println("teleopPeriodic: Intake Stop");
       m_intake.set(ControlMode.PercentOutput, 0);
+    }
+
+    //Handle the tunnel
+    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_7)) { //start tunnel
+      System.out.println("teleopPeriodic: Tunnel Start");
+      m_tunnel.set(Constants.Tunnel.kTunnelSpeed);
+    } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_7)) { //stop tunnel
+      System.out.println("teleopPeriodic: Tunnel Stop");
+      m_tunnel.stopMotor();
+    }
+
+    //Handle the shooter
+    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_7)) { //start shooter
+      System.out.println("teleopPeriodic: Shooter Start");
+      m_shooter.set(Constants.Shooter.kShooterSpeed);
+    } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_7)) { //stop shooter
+      System.out.println("teleopPeriodic: Shooter Stop");
+      m_shooter.stopMotor();
     }
   }
 

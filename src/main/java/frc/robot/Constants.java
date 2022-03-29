@@ -6,6 +6,10 @@ public class Constants {
         //IDs of Talons
         public class Talon {
             public static final int intake = 10;
+            //Need to use phoenix tuner to upgrade the talons and set the ID on them as follows
+            public static final int tunnel = 11; 
+            public static final int shooterLeft = 12;
+            public static final int shooterRight = 13;
         }
         //IDs of Victors
         public class Victor {
@@ -36,8 +40,21 @@ public class Constants {
     //Collector/Intake
     public class Collector {
         public static final boolean airStateDeployed = true; //state of the solenoid when collector deployed
-        public static final double kIntakeSpeed = 1; //Speed of intake motors
+        public static final double kIntakeSpeed = 1.0; //Speed of intake motors
         public static final boolean intakeIsInverted = false; //invert intake direction
+    }
+
+    //Tunnel
+    public class Tunnel {
+        public static final double kTunnelSpeed = 1.0;
+        public static final boolean tunnelIsInverted = false;
+    }
+
+    //Shooter
+    public class Shooter {
+        public static final double kShooterSpeed = 1.0;
+        public static final boolean shooterLeftIsInverted = false;
+        public static final boolean shooterRightIsInverted = false;
     }
 
     //Auton

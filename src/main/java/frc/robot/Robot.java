@@ -117,10 +117,10 @@ public class Robot extends TimedRobot {
     }
 
     //Handle the tunnel
-    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_7)) { //start tunnel
+    if(m_rightJoystick.getRawButtonPressed(Constants.Controllers.Ultrastik.BTN_6)) { //start tunnel
       System.out.println("teleopPeriodic: Tunnel Start");
       m_tunnel.set(Constants.Tunnel.kTunnelSpeed);
-    } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_7)) { //stop tunnel
+    } else if (m_rightJoystick.getRawButtonReleased(Constants.Controllers.Ultrastik.BTN_6)) { //stop tunnel
       System.out.println("teleopPeriodic: Tunnel Stop");
       m_tunnel.stopMotor();
     }

@@ -14,10 +14,13 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 
@@ -46,6 +49,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
+    //Disable LiveWindow data (not needed)
+    LiveWindow.disableAllTelemetry();
+    //Start Camera Server
+    UsbCamera camera = CameraServer.startAutomaticCapture();
+    camera.setResolution(640, 480);
     // Invert one side only usually, so that forward is green on the controller and backwards is red
     m_leftMotor.setInverted(Constants.DriveTrain.Left.isInverted);
     m_rightMotor.setInverted(Constants.DriveTrain.Right.isInverted);
